@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eef5ff">
+  <title>Le rituel de la date — Grande Section</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <span class="eyebrow">NOTRE RITUEL DU MATIN</span>
+        <h1>Aujourd’hui, nous sommes…</h1>
+      </div>
+      <button id="fullscreen" class="utility fullscreen-button" type="button" aria-label="Passer en plein écran">⛶ <span>Plein écran</span></button>
+    </header>
+
+    <section class="date-panel" aria-label="Date à construire">
+      <div class="date-title"><span class="sun-mark" aria-hidden="true">✦</span> Construisons la date</div>
+      <div class="slots">
+        <div class="slot" data-slot="day" aria-label="Case jour"><small>JOUR</small><strong>Dépose ici</strong></div>
+        <div class="slot" data-slot="number" aria-label="Case numéro"><small>NUMÉRO</small><strong>Dépose ici</strong></div>
+        <div class="slot" data-slot="month" aria-label="Case mois"><small>MOIS</small><strong>Dépose ici</strong></div>
+      </div>
+    </section>
+
+    <section class="work" aria-label="Choix de la date">
+      <div class="work-heading">
+        <div class="step-mark" id="step-mark" aria-hidden="true"><span>1</span><i></i><span>2</span><i></i><span>3</span></div>
+        <div class="instruction-block">
+          <span id="step-label" class="eyebrow">ÉTAPE 1 SUR 3</span>
+          <h2 id="instruction">Choisis le jour</h2>
+        </div>
+        <button id="back" class="utility back-button" type="button" hidden>← Retour</button>
+      </div>
+      <div id="choices" class="choices" aria-live="polite"></div>
+      <div class="actions">
+        <p id="feedback" role="status" aria-live="polite">Glisse une étiquette dans la case du haut, ou touche-la.</p>
+        <button id="validate" class="primary" type="button" hidden>✓ Vérifier la date</button>
+        <button id="restart" class="utility restart-button" type="button" aria-label="Recommencer le rituel">↻ Recommencer</button>
+      </div>
+    </section>
+
+    <section class="season-panel" aria-label="Choix de la saison">
+      <div class="season-heading">
+        <span class="eyebrow">ET AUSSI…</span>
+        <h2>Quelle est la saison ?</h2>
+        <span id="season-feedback" class="season-feedback" aria-live="polite">Choisis une saison</span>
+      </div>
+      <div class="seasons">
+        <button class="season spring" type="button" data-season="printemps"><span class="season-picture" aria-hidden="true">🌷</span><strong>PRINTEMPS</strong></button>
+        <button class="season summer" type="button" data-season="été"><span class="season-picture" aria-hidden="true">☀️</span><strong>ÉTÉ</strong></button>
+        <button class="season autumn" type="button" data-season="automne"><span class="season-picture" aria-hidden="true">🍂</span><strong>AUTOMNE</strong></button>
+        <button class="season winter" type="button" data-season="hiver"><span class="season-picture" aria-hidden="true">❄️</span><strong>HIVER</strong></button>
+      </div>
+    </section>
+
+    <footer>
+      <span>La date reste cachée jusqu’à la vérification.</span>
+      <button id="settings" class="utility teacher-button" type="button">⚙ Enseignant</button>
+    </footer>
+  </main>
+
+  <dialog id="settings-dialog" aria-labelledby="settings-title">
+    <form method="dialog" id="settings-form">
+      <div class="dialog-heading">
+        <span class="eyebrow">ESPACE ENSEIGNANT</span>
+        <h2 id="settings-title">Réglages du rituel</h2>
+      </div>
+      <label class="toggle-row"><input id="automatic-date" type="checkbox"><span>Utiliser la date de l’ordinateur</span></label>
+      <label>Date à travailler <input id="target-date" type="date"></label>
+      <label>Difficulté des numéros
+        <select id="number-mode">
+          <option value="all">Tous les numéros de 1 à 31</option>
+          <option value="near">7 numéros autour du jour</option>
+        </select>
+      </label>
+      <p class="settings-note">La saison est déterminée à partir des saisons calendaires, avec des dates fixes simplifiées.</p>
+      <div class="dialog-actions">
+        <button value="cancel" class="utility" type="submit">Annuler</button>
+        <button id="save-settings" value="save" class="primary" type="submit">Appliquer</button>
+      </div>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
